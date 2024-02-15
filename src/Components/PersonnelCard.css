@@ -1,0 +1,23 @@
+.personnel-card {
+  width: 200px;
+  height: 240px;
+  border: 1px solid black;
+  border-radius: 20px;
+  box-shadow: 2px 2px 5px #3333;
+  text-align: center;
+  background-color: #343646;
+}
+
+.field {
+  text-align: justify;
+  padding-left: 10px;
+}
+
+.name {
+  color: #646cff;
+}
+
+.delete-btn {
+  color: #e10d05;
+  cursor: pointer;
+}
