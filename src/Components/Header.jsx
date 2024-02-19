@@ -1,19 +1,10 @@
 import { useState } from "react";
 import "./Header.css";
+import countries from "../data/countries.js";
 
 const Header = ({ addPerson }) => {
-  //   const [formState, setFormState] = useState({
-  //     name: "",
-  //     age: 0,
-  //     email: "",
-  //     country: "",
-  //   });
-
-  //   const handleChange = (e) => {
-  //     setFormState({ ...formState, [e.target.id]: e.target.value });
-  //   };
   const [name, setName] = useState("");
-  const [age, setAge] = useState(0);
+  const [age, setAge] = useState("");
   const [country, setCountry] = useState("");
   const [email, setEmail] = useState("");
 
@@ -62,12 +53,6 @@ const Header = ({ addPerson }) => {
   };
 
   const fillOutValues = (data) => {
-    // setFormState({
-    //   ...formState,
-    //   name: `${data.first_name} ${data.last_name}`,
-    //   age: getRandomNumber(),
-    //   email: data.email,
-    // });
     setName(`${data.first_name} ${data.last_name}`);
     setAge(getRandomNumber());
     setEmail(data.email);
@@ -90,13 +75,20 @@ const Header = ({ addPerson }) => {
         value={age}
         onChange={(e) => setAge(e.target.value)}
       />
-      <input
-        type="text"
+      <select
         id="country"
-        placeholder="país"
         value={country}
         onChange={(e) => setCountry(e.target.value)}
-      />
+      >
+        <option value="">Country</option>
+        {countries.map((country, index) => {
+          return (
+            <option key={index} value={country.code}>
+              {country.name}
+            </option>
+          );
+        })}
+      </select>
       <input
         type="email"
         id="email"
@@ -107,7 +99,9 @@ const Header = ({ addPerson }) => {
       <button className="button-32" onClick={handleGenerate}>
         Generate
       </button>
-      <button className="button-34" onClick={handleSubmit}>Submit</button>
+      <button className="button-34" onClick={handleSubmit}>
+        Submit
+      </button>
     </header>
   );
 };
