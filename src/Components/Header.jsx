@@ -15,12 +15,11 @@ const Header = ({ addPerson }) => {
       country: country,
       email: email,
     };
-    addPerson(person);
     post(person);
   };
 
   function post(person) {
-    fetch("https://people-service-9zf8.onrender.com/people", {
+    fetch("https://people-service-9zf8.onrender.com/person", {
       method: "POST",
       mode: "cors",
       body: JSON.stringify(person),
@@ -29,7 +28,10 @@ const Header = ({ addPerson }) => {
       },
     })
       .then((response) => response.json())
-      .then((data) => console.log(data))
+      .then((data) => {
+        console.log(data);
+        addPerson(data);
+      })
       .catch((error) => console.log(error));
   }
 
